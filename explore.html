@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TeenAI Life</title>
+    <style type="text/css">
+        @font-face {
+            font-family: 'font';
+            src: url(BaiJamjuree-Bold.ttf) format('truetype');
+        }
+
+        body {
+	        font-family: "PK Uttaradit Medium";
+	        background-color: #CCC;
+	        font-size: 12px;
+	        margin: 0;
+	        padding: 0;
+	        border: 0;
+	        background-image: url(img/background1.jpg);
+        }
+
+
+        nav {
+            background-color: #131672;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 16px;
+			font-family: 'font';
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff66cc;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .brand {
+            font-family: 'font';
+            font-size: 18px;
+            color: white;
+            white-space: nowrap;
+            margin-right: auto;
+        }
+
+        nav a {
+            margin: 0 10px;
+        }
+
+
+        #chat {
+            background: white;
+            max-width: 600px;
+            margin: 20px 550px 40px auto;
+            margin-top: 10px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #chat h2 {
+            font-family: 'font';
+            color: #131672;
+            margin-bottom: 20px;
+        }
+
+        #chatbox {
+            background: #1e1e2f;
+            color: #fff;
+            padding: 15px;
+            height: 170px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+
+        #userInput {
+            width: 60%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 18px;
+            background: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #5548d9;
+        }
+
+        .circle-button {
+            text-align: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .circle-button:hover {
+            transform: translateY(-7px) scale(1.05);
+        }
+
+        .circle-button img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+        }
+
+        .circle-button div {
+            color: white;
+            font-size: 14px;
+            margin-top: 8px;
+            font-family: 'font';
+        }
+
+        .ai-section {
+            padding: 60px 120px 30px;
+        }
+
+        .ai-section h2 {
+            font-family: 'font';
+            color: white;
+            font-size: 50px;
+			margin-left: 100px;
+            margin-bottom: 30px;
+        }
+
+        .circle-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+              <nav>
+                    <div class="nav-wrapper">
+                      <div class="brand">TeenAI Life | โลกของ AI กับวัยทีน</div>
+                      <a href="index.html">หน้าแรก</a>
+                      <a href="test.html">แบบประเมิน</a>
+                      <a href="explore.html">สำรวจโลก AI</a>
+                    </div>
+              </nav>
+          </td>
+        </tr>
+        <tr>
+            <td height="787" style="padding: 0;">
+
+              <div class="ai-section"</div>
+                    <h2>AI กับชีวิตวัยรุ่น</h2>
+                    <div class="circle-container">
+                        <a href="edu.html" class="circle-button"><img src="img/edu.jpg">
+                            <div>การศึกษา</div>
+                        </a>
+                        <a href="fun.html" class="circle-button"><img src="img/fun.jpg">
+                            <div>บันเทิง</div>
+                        </a>
+                        <a href="fashion.html" class="circle-button"><img src="img/fashion.jpg">
+                            <div>แฟชั่น/สไตล์</div>
+                        </a>
+                        <a href="tech.html" class="circle-button"><img src="img/tech.jpg">
+                            <div>เทคโนโลยี</div>
+                        </a>
+                        <a href="envi.html" class="circle-button"><img src="img/envi.jpg">
+                            <div>สิ่งแวดล้อม</div>
+                        </a>
+                    </div>
+                </div>
+
+              <section id="chat">
+                    <h2>Chat กับ คำสุข</h2>
+                    <div id="chatbox"></div>
+                    <input type="text" id="userInput" placeholder="พิมพ์ข้อความของคุณ..." />
+                <button onclick="sendMessage()">ส่ง</button>
+                </section>
+            </td>
+        </tr>
+
+        <tr>
+            <td><img src="img/footer.jpg"></td>
+        </tr>
+    </table>
+
+<script>
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const chatbox = document.getElementById("chatbox");
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            chatbox.innerHTML += `<p><strong>คุณ:</strong> ${msg}</p>`;
+            let reply = "ขอบคุณที่แชร์นะ ลองหายใจเข้าลึกๆ แล้วเล่าให้ฉันฟังได้เสมอ";
+            if (msg.includes("เครียด") || msg.includes("เหนื่อย")) reply = "ฟังดูเหนื่อยมากเลย อยากให้พักสักนิด แล้วค่อยกลับมานะ";
+            else if (msg.includes("นอนไม่หลับ")) reply = "ลองฟังเพลงช้าๆ หรือฝึกสมาธิก่อนนอนดูไหม?";
+
+            chatbox.innerHTML += `<p><strong>คำสุข :</strong> ${reply}</p>`;
+            input.value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        window.onload = () => {
+            document.getElementById("chatbox").innerHTML =
+                "<p><strong>คำสุข :</strong> สวัสดีครับ! ผมชื่อคำสุข พร้อมเป็นเพื่อนคุยและให้คำปรึกษาครับ</p>";
+        };
+    </script>
+
+</body>
+
+</html>
